@@ -11,7 +11,7 @@
 Решение задачи по ниже приведённой документации
  <p><a href="https://youtu.be/Sq2A41HWY1w" target="_blank" >можно посмотреть здесь</a></p>
  
- 
+ ---
 
 # Simple Books API #
 
