@@ -12,8 +12,8 @@ ___
 Method: GET
 EndPoint: /get_method
 request url params: 
- name: str
- age: int
+ name: Andrei
+ age: 47
 
 response: 
 [
@@ -29,9 +29,9 @@ response:
 Method: POST
 EndPoint: /user_info_3
 request form data: 
- name: str
- age: int
- salary: int
+ name: Andrei
+ age: 47
+ salary: 1499
 
 response: 
 {'name': name,
@@ -48,9 +48,9 @@ response:
 Method: GET
 EndPoint: /object_info_1
 request url params: 
- name: str
- age: int
- weight: int
+ name: Andrei
+ age: 47
+ weight: 74
 
 response: 
 {'name': name,
@@ -66,9 +66,9 @@ response:
 Method: GET
 EndPoint: /object_info_2
 request url params: 
- name: str
- age: int
- salary: int
+ name: Andrei
+ age: 47
+ salary: 999
 
 response: 
 {'start_qa_salary': salary,
@@ -88,9 +88,9 @@ response:
 Method: GET
 EndPoint: /object_info_3
 request url params: 
- name: str
- age: int
- salary: int
+ name: Andrei
+ age: 47
+ salary: 1234
 
 response: 
 {'name': name,
@@ -111,9 +111,9 @@ response:
 Method: GET
 EndPoint: /object_info_4
 request url params: 
- name: str
- age: int
- salary: int
+ name: Andrei
+ age: 47
+ salary: 1235
 
 response: 
 {'name': name,
@@ -128,9 +128,9 @@ response:
 Method: POST
 EndPoint: /user_info_2
 request form data: 
- name: str
- age: int
- salary: int
+ name: Andrei
+ age: 47
+ salary: 1300
 
 response: 
 {'start_qa_salary': salary,
