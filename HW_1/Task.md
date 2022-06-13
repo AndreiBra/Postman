@@ -68,7 +68,7 @@ EndPoint: /object_info_2
 request url params: 
  name: Andrei
  age: 47
- salary: 999
+ salary: 1000
 
 response: 
 {'start_qa_salary': salary,
@@ -90,7 +90,7 @@ EndPoint: /object_info_3
 request url params: 
  name: Andrei
  age: 47
- salary: 1234
+ salary: 999
 
 response: 
 {'name': name,
@@ -113,7 +113,7 @@ EndPoint: /object_info_4
 request url params: 
  name: Andrei
  age: 47
- salary: 1235
+ salary: 3333
 
 response: 
 {'name': name,
@@ -130,7 +130,7 @@ EndPoint: /user_info_2
 request form data: 
  name: Andrei
  age: 47
- salary: 1300
+ salary: 1000
 
 response: 
 {'start_qa_salary': salary,
