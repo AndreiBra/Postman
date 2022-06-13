@@ -143,3 +143,4 @@ response:
                      'u_salary_5_years': salary * 4.2}
           }
 ```
+# Решение задачи можно посмотреть в файле HW_1.postman_collection.json, либо перейти по [ссылке](https://github.com/AndreiBra/Postman/blob/main/HW_1/HW_1.postman_collection.json)
