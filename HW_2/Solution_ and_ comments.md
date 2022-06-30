@@ -2,7 +2,7 @@
 ###  http://162.55.220.72:5005/first
   
 ``` 
-Creating a new collection "HW_2"
+Creating  'new collection' "HW_2"
   
 "Add a request" name - "hw_2"
   
@@ -27,7 +27,7 @@ pm.test("Status code is 200", function () {
 ```
 Во вкладке *Test Results*  
 ```
-PASS hw_2. Status code is 200
+PASS Status code is 200
 ```
 3. Проверить, что в body приходит правильный string  
   
@@ -40,7 +40,7 @@ pm.test("hw_2. Your test body", function () {
 ```
 Во вкладке *Test Results*  
 ```
-PASS hw_2. Your test body
+PASS Your test body
 ```   
 
 
@@ -74,6 +74,8 @@ PASS Status code is 200
 let responseData = pm.response.json();  
 console.log('response data:', responseData)
 ```
+run `Send` 
+
 В консольной строке смотрим ответ:  
 ```
 response data: {age: "36", family: {…}, name: "Sergey"…}
@@ -88,7 +90,7 @@ pm.test("Your test name", function () {
 ```
 Во вкладке *Test Results*  
 ```
-PASS EP_2_2. Your test name
+PASS Your test name
 ```
 **5. Проверить, что age в ответе равно age s request (age вбить руками.)**  
    
@@ -100,7 +102,7 @@ pm.test("Your test name", function () {
 ```
 Во вкладке *Test Results*  
 ```
-PASS EP_2_2. Your test Age
+PASS  Your test Age
 ```
 **6. Проверить, что salary в ответе равно salary s request (salary вбить руками.)**  
   
