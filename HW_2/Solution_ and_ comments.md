@@ -17,7 +17,8 @@ response `This is the first responce from server!`
   
 **2. Статус код 200**   
   
-В поле `Tests`  из списка `SNIPPETS` берём *Status code; Code is 200*
+В поле `Tests`  из списка `SNIPPETS` выбираем *"Status code; Code is 200"* -> run `Send`
+
 в поле ввода кода появляется: 
   
 ```js
@@ -34,13 +35,11 @@ PASS Status code is 200
 ответ в *body*  
 
 ```js
-pm.test("hw_2. Your test body", function () {
-    pm.response.to.have.body('This is the first responce from server!');
-});
+'This is the first responce from server!'
 ```
 Во вкладке *Test Results*  
 ```
-PASS Your test body
+PASS Status code is 200
 ```   
 
 
@@ -76,16 +75,16 @@ console.log('response data:', responseData)
 ```
 run `Send` 
 
-В консольной строке смотрим ответ:  
+В консольной строке появится ответ:  
 ```
-response data: {age: "36", family: {…}, name: "Sergey"…}
+response data: {age: "..", family: {…}, name: "Sergey"…}
 ```
 **4. Проверить, что name в ответе равно name s request (name вбить руками.)**  
   
 В окне *Tests* пишем:  
 ```js
 pm.test("Your test name", function () {
-    pm.expect(responseData.name).to.eql("Sergey");
+    pm.expect(responseData.name).to.eql("Andrei");
 });
 ```
 Во вкладке *Test Results*  
@@ -97,7 +96,7 @@ PASS Your test name
 В окне *Tests* пишем:  
 ```js
 pm.test("Your test name", function () {
-    pm.expect(responseData.age).to.eql("36");
+    pm.expect(responseData.age).to.eql("47");
 });
 ```
 Во вкладке *Test Results*  
@@ -109,12 +108,12 @@ PASS  Your test Age
 В окне *Tests* пишем:  
 ```js
 pm.test("Your test salary", function () {
-    pm.expect(responseData.salary).to.eql(60000);
+    pm.expect(responseData.salary).to.eql(700);
 });
 ```
 Во вкладке *Test Results*  
 ```
-PASS EP_2_2. Your test salary
+PASS Your test salary
 ```
 **7. Спарсить request**  
   
@@ -125,7 +124,7 @@ console.log('request data:', requestData)
 ```
 В консольной строке смотрим ответ:  
 ```
- request data: {name: "Sergey", age: "36", salary: "60000"}
+ request data: {name: "Andrei", age: "47", salary: "700"}
  ```
 **8. Проверить, что name в ответе равно name s request (name забрать из request.)**  
   
@@ -137,7 +136,7 @@ pm.test("Your test name", function () {
 ```
 Во вкладке *Test Results*  
 ```
-PASS EP_2_2. Your test name
+PASS  Your test name
 ```
 **9. Проверить, что age в ответе равно age s request (age забрать из request.)**  
   
@@ -149,7 +148,7 @@ pm.test("Your test age", function () {
 ```
 Во вкладке *Test Results*  
 ```
-PASS EP_2_2. Your test age
+PASS Your test age
 ```
 **10. Проверить, что salary в ответе равно salary s request (salary забрать из request.)**  
   
@@ -161,7 +160,7 @@ pm.test("Your test salary", function () {
 ```
 Во вкладке *Test Results*  
 ```
-PASS EP_2_2. Your test salary
+PASS Your test salary
 ```
 **11. Вывести в консоль параметр family из response**  
   
@@ -171,7 +170,7 @@ console.log('Family: ', responseData.family)
 ```
 В консольной строке смотрим ответ:  
 ```
-Family: {children: [2], u_salary_1_5_year: 240000}
+Family: {children: [2], u_salary_1_5_year: 12600}
 ```
 **12.  Проверить что u_salary_1_5_year в ответе равно salary*4 (salary забрать из request)**  
   
@@ -183,22 +182,25 @@ pm.test("Your test u_salary_1_5_year", function () {
 ```
 Во вкладке *Test Results* 
 ```
-PASS EP_2_2. Your test u_salary_1_5_year
+PASS Your test u_salary_1_5_year
 ```
-  
+___
+
   ***  
-	
-## **EP_2_3**<a name="2.3"><a>  
-Создаем New Request, данные берем из EP_1_5  
-Метод GET, http://162.55.220.72:5005/object_info_3 (EP_1_5 из HW_Postman_1)  
+### http://162.55.220.72:5005/object_info_3	
+
+``` 
+"Add a request" name - "hw_2" 
+GET, http://162.55.220.72:5005/object_info_3
+```  
   
 **1. Отправить запрос**  
   
-Жмем *Send*  
+run `Send`  
   
 **2. Статус код 200**   
   
-В поле тест выбираем из списка SNIPPETS *Status code is 200*, в поле ввода кода появляется:    
+В поле 'Tests' выбираем из списка SNIPPETS *Status code is 200*, в поле ввода кода появляется:    
 ```js
 pm.test("Status code is 200", function () {
     pm.response.to.have.status(200);
@@ -215,9 +217,11 @@ PASS Status code is 200
 let responseData = pm.response.json();  
 console.log('response data:', responseData)
 ```
+run `Send`
+
 В консольной строке смотрим ответ:
 ```
-response data: {age: "36", family: {…}, name: "Sergey"…}
+response data: {age: "47", family: {…}, name: "Andrei"…}
 ```
 **4. Спарсить request**  
   
@@ -226,21 +230,23 @@ response data: {age: "36", family: {…}, name: "Sergey"…}
 let requestData = pm.request.url.query.toObject();
 console.log('request data:', requestData)
 ```
-В консольной строке смотрим ответ:
+run `Send`
+
+В Console смотрим ответ:
 ```
-request data: {name: "Sergey", age: "36", salary: "60000"}
+request data: {name: "Andrei", age: "47", salary: "7000"}
 ```
 **5. Проверить, что name в ответе равно name s request (name забрать из request.)**  
   
 В окне *Tests* пишем:  
 ```js
-pm.test("EP_2_3. Your test name", function () {
+pm.test("Your test name", function () {
     pm.expect(responseData.name).to.eql(requestData.name);
 });
 ```
 Во вкладке *Test Results*  
 ```
-PASS EP_2_3. Your test name
+PASS  Your test name
 ```
 **6. Проверить, что age в ответе равно age s request (age забрать из request.)**  
   
