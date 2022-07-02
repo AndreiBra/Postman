@@ -384,7 +384,7 @@ pm.test("Test dog have age 4", function () {
 PASS Test dog have age 4
 ```
 ___
-
+```
 Cоздаем New Request, данные берем из EP_1_6  из HW_1
 или 
 Метод GET, http://162.55.220.72:5005/object_info_4 
@@ -394,7 +394,7 @@ request url params:
  name: Andrei
  age: 47
  salary: 3333  
- 
+ ```
  
 **1. Отправить запрос**  
    
