@@ -275,7 +275,7 @@ run `Send`
 
 В Console смотрим ответ:
 ```
-request data: {name: "Andrei", age: "47", salary: "7000"}
+request data: {name: "Andrei", age: "47", salary: "1000"}
 ```
 **5. Проверить, что name в ответе равно name s request (name забрать из request.)**  
   
@@ -357,7 +357,7 @@ run `Send`
 
 Во вкладке *Test Results*  
 ```
-PASS EP_2_3. Test dog has age
+PASS Test dog has age
 ```
 **11. Проверить, что параметр name имеет значение Luky**  
   
