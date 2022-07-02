@@ -65,14 +65,16 @@ run `Send`
 
 **2. Статус код 200**   
   
-В поле тест выбираем из списка SNIPPETS *Status code is 200*, run `Send` в поле ввода кода появляется: 
+В поле тест выбираем из списка SNIPPETS *Status code is 200*, в поле ввода кода появляется: 
 
 ```js
 pm.test("Status code is 200", function () {
     pm.response.to.have.status(200);
 });
 ```
-Во вкладке *Test Results*  -> run `Send`
+run `Send`
+
+Во вкладке *Test Results*  
 ```
 PASS Status code is 200
 ```
@@ -93,7 +95,7 @@ response data: {age: "47", family: {…}, name: "Andrei"…}
   
 В окне *Tests* пишем:  
 ```js
-pm.test("Your test name", function () {
+pm.test("Test name", function () {
     pm.expect(responseData.name).to.eql("Andrei");
 });
 ```
@@ -101,31 +103,35 @@ run `Send`
 
 Во вкладке *Test Results*  
 ```
-PASS Your test name
+PASS Test name
 ```
 **5. Проверить, что age в ответе равно age s request (age вбить руками.)**  
    
 В окне *Tests* пишем:  
 ```js
-pm.test("Your test name", function () {
+pm.test("Test age", function () {
     pm.expect(responseData.age).to.eql("47");
 });
 ```
+run `Send`
+
 Во вкладке *Test Results*  
 ```
-PASS  Your test Age
+PASS  Test Age
 ```
 **6. Проверить, что salary в ответе равно salary s request (salary вбить руками.)**  
   
 В окне *Tests* пишем:  
 ```js
-pm.test("Your test salary", function () {
-    pm.expect(responseData.salary).to.eql(700);
+pm.test("Test salary", function () {
+    pm.expect(responseData.salary).to.eql(1000);
 });
 ```
+run `Send`
+
 Во вкладке *Test Results*  
 ```
-PASS Your test salary
+PASS Test salary
 ```
 **7. Спарсить request**  
   
@@ -134,9 +140,11 @@ PASS Your test salary
 let requestData = request.data;  
 console.log('request data:', requestData)
 ```
+run `Send`
+
 В консольной строке смотрим ответ:  
 ```
- request data: {name: "Andrei", age: "47", salary: "700"}
+ request data: {name: "Andrei", age: "47", salary: "1000"}
  ```
 **8. Проверить, что name в ответе равно name s request (name забрать из request.)**  
   
@@ -146,6 +154,8 @@ pm.test("Your test name", function () {
     pm.expect(responseData.name).to.eql(requestData.name);
 });
 ```
+run`Send`
+
 Во вкладке *Test Results*  
 ```
 PASS  Your test name
@@ -158,6 +168,8 @@ pm.test("Your test age", function () {
     pm.expect(responseData.age).to.eql(requestData.age);
 });
 ```
+run `Send`
+
 Во вкладке *Test Results*  
 ```
 PASS Your test age
@@ -170,6 +182,8 @@ pm.test("Your test salary", function () {
     pm.expect(responseData.salary).to.eql(Number(requestData.salary));
 });
 ```
+run `Send`
+
 Во вкладке *Test Results*  
 ```
 PASS Your test salary
@@ -180,18 +194,22 @@ PASS Your test salary
 ```js
 console.log('Family: ', responseData.family)
 ```
+run `Send`
+
 В консольной строке смотрим ответ:  
 ```
-Family: {children: [2], u_salary_1_5_year: 12600}
+Family: {children: [2], u_salary_1_5_year: 4000}
 ```
 **12.  Проверить что u_salary_1_5_year в ответе равно salary*4 (salary забрать из request)**  
   
 В окне *Tests* пишем:  
 ```js
-pm.test("Your test u_salary_1_5_year", function () {
+pm.test("Test u_salary_1_5_year", function () {
     pm.expect(responseData.family.u_salary_1_5_year).to.eql(requestData.salary*4);
 });
 ```
+run `Send`
+
 Во вкладке *Test Results* 
 ```
 PASS Your test u_salary_1_5_year
