@@ -383,16 +383,19 @@ pm.test("Test dog have age 4", function () {
 ```
 PASS Test dog have age 4
 ```
+___
 
-  ***  
-
-## **EP_2_4**<a name="2.4"><a>  
-Создаем New Request, данные берем из EP_1_6  
-Метод GET, http://162.55.220.72:5005/object_info_4 (EP_1_6 из HW_Postman_1)  
-  
+Cоздаем New Request, данные берем из EP_1_6  из HW_1
+Метод GET, http://162.55.220.72:5005/object_info_4 
+Method: GET
+EndPoint: /object_info_4
+request url params: 
+ name: Andrei
+ age: 47
+ salary: 3333  
 **1. Отправить запрос**  
    
-Жмем *Send*  
+run `Send`  
   
 **2. Статус код 200**   
   
@@ -402,6 +405,8 @@ pm.test("Status code is 200", function () {
     pm.response.to.have.status(200);
 });
 ```
+run `Send`
+
 Во вкладке *Test Results*  
 ```
 PASS Status code is 200
@@ -414,9 +419,11 @@ PASS Status code is 200
 let responseData = pm.response.json();  
 console.log('response data:', responseData)
 ```
+run `Send`
+
 В консольной строке смотрим ответ:
 ```
-response data: {age: 36, name: "Sergey", salary: [3]}
+response data: {age: 47, name: "Andrei", salary: [3333]}
 ```
   
 **4. Спарсить request**  
@@ -426,34 +433,40 @@ response data: {age: 36, name: "Sergey", salary: [3]}
 let requestData = pm.request.url.query.toObject();
 console.log('request data:', requestData)
 ```
+run `Send`
+
 В консольной строке смотрим ответ:
 ```
-request data: {name: "Sergey", age: "36", salary: "60000"}
+request data: {name: "Andrei", age: "47", salary: "3333"}
 ```
   
 **5. Проверить, что name в ответе равно name s request (name забрать из request.)**  
   
 В окне *Tests* пишем:  
 ```js
-pm.test("EP_2_4. Your test name", function () {
+pm.test("Test name", function () {
     pm.expect(responseData.name).to.eql(requestData.name);
 });
 ```
+run `Send`
+
 Во вкладке *Test Results*  
 ```
-PASS EP_2_4. Your test name
+PASS Test name
 ```
 **6. Проверить, что age в ответе равно age из request (age забрать из request.)**
   
 В окне *Tests* пишем:  
 ```js
-pm.test("EP_2_4. Your test age", function () {
+pm.test("Test age", function () {
     pm.expect(responseData.age).to.eql(Number(requestData.age));
 });
 ```
+run `Send`
+
 Во вкладке *Test Results*  
 ```
-PASS EP_2_4. Your test age
+PASS Test age
 ```  
 **7. Вывести в консоль параметр salary из request**  
   
@@ -461,9 +474,11 @@ PASS EP_2_4. Your test age
 ```js
 console.log(requestData.salary);
 ```
+run `Send`
+
 В консольной строке смотрим ответ:
 ```
-60000
+3333
 ```
 
 **8. Вывести в консоль параметр salary из response**  
@@ -472,9 +487,11 @@ console.log(requestData.salary);
 ```js
 console.log(responseData.salary);
 ```
+run `Send`
+
 В консольной строке смотрим ответ:
 ```
-(3) [60000, "120000", "180000"]
+(3) [3333, "6666", "9999"]
 ```
 **9. Вывести в консоль 0-й элемент параметра salary из response**  
   
@@ -482,9 +499,11 @@ console.log(responseData.salary);
 ```js
 console.log(responseData.salary[0]);
 ```
+run `Send`
+
 В консольной строке смотрим ответ:
 ```
-60000
+3333
 ```
 **10. Вывести в консоль 1-й элемент параметра salary параметр salary из response**  
   
@@ -492,9 +511,11 @@ console.log(responseData.salary[0]);
 ```js
 console.log(responseData.salary[1]);
 ```
+run `Send`
+
 В консольной строке смотрим ответ:
 ```
-120000
+6666
 ```
 **11. Вывести в консоль 2-й элемент параметра salary параметр salary из response**  
   
@@ -502,60 +523,64 @@ console.log(responseData.salary[1]);
 ```js
 console.log(responseData.salary[2]);
 ```
+run `Send`
+
 В консольной строке смотрим ответ:
 ```
-180000
+9999
 ```
 **12. Проверить, что 0-й элемент параметра salary равен salary из request (salary забрать из request.)**  
   
 В окне *Tests* пишем:  
 ```js
-pm.test("EP_2_4. Your test salary 0", function () {
+pm.test("Test salary zero element", function () {
     pm.expect(responseData.salary[0]).to.eql(Number(requestData.salary));
 });
 ```
+run `Send`
+
 Во вкладке *Test Results*  
 ```
-PASS EP_2_4. Your test salary 0
+PASS Test salary zero element
 ```
 **13. Проверить, что 1-й элемент параметра salary равен salary*2 из request (salary забрать из request.)**  
   
 В окне *Tests* пишем:  
 ```js
-pm.test("EP_2_4. Your test salary 1", function () {
+pm.test("Test salary first element", function () {
     pm.expect(Number(responseData.salary[1])).to.eql(Number(requestData.salary*2));
 });
 ```
 Во вкладке *Test Results*  
 ```
-PASS EP_2_4. Your test salary 1
+PASS Test salary firsrt element
 ```
 **14. Проверить, что 2-й элемент параметра salary равен salary*3 из request (salary забрать из request.)**  
   
 В окне *Tests* пишем:  
 ```js
-pm.test("EP_2_4. Your test salary 2", function () {
+pm.test("Test salary second element", function () {
     pm.expect(Number(responseData.salary[2])).to.eql(Number(requestData.salary*3));
 });
 ```
 Во вкладке *Test Results*  
 ```
-PASS EP_2_4. Your test salary 2
+PASS Test salary second element
 ```
 **15. Создать в окружении переменную name**  
   
-в меню слева выбирать *Environment*, далее жмем *New* и выбираем из списка *Environment*.  
-Переименовываем в Environment_Sergey_Karabekovю В строку *Variable* вносим название переменной name, в *Current value* пишем Sergey  
+в меню слева выбирать *Environment*, далее жмем *New*
+Переименовываем в HW_2 В строку *Variable* вносим название переменной name, в *Current value* пишем Andrei  
   
 **16. Создать в окружении переменную age**  
   
-в меню слева выбирать *Environment*, далее выбираем Environment_Sergey_Karabekovю.  
-В строку *Variable* вносим название переменной age, в *Current value* пишем 36  
+в меню слева выбирать *Environment*, далее выбираем HW_2.  
+В строку *Variable* вносим название переменной age, в *Current value* пишем 47  
   
 **17. Создать в окружении переменную salary**  
   
-в меню слева выбирать *Environment*, далее выбираем Environment_Sergey_Karabekovю.  
-В строку *Variable* вносим название переменной salary, в *Current value* пишем 60000  
+в меню слева выбирать *Environment*, далее выбираем HW_2.  
+В строку *Variable* вносим название переменной salary, в *Current value* пишем 3333 
   
 **18. Передать в окружение переменную name**  
   
@@ -585,14 +610,15 @@ for (let i = 0; i < 3; i=i+1) {
 ```
 В консольной строке смотрим ответ:
 ```
-My salary: 60000
+My salary: 3333
  
-My salary: 120000
+My salary: 6666
  
-My salary: 18000
+My salary: 9999
 ```
-      
-  ***     
+___
+
+
   
 ## **EP_2_5**<a name="2.5"><a>  
 Создаем New Request, выбираем метод POST,  
