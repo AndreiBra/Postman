@@ -897,7 +897,7 @@ console.log(i +': ' + responseData.person[i]);
 ```
 u_age: 47
  
-u_name: Andrei,1000,47
+u_name: Andrei,3333,47
  
-u_salary_5_years: 60000
+u_salary_5_years: 13998,6
 ```
