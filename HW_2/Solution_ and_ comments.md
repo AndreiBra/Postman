@@ -222,6 +222,15 @@ ___
 ``` 
 "Add a request" name - "hw_2" 
 GET, http://162.55.220.72:5005/object_info_3
+
+или продублировать EP_5 из HW_1
+
+Method: GET
+EndPoint: /object_info_3
+request url params: 
+ name: Andrei
+ age: 47
+ salary: 1000
 ```  
   
 **1. Отправить запрос**  
@@ -236,6 +245,8 @@ pm.test("Status code is 200", function () {
     pm.response.to.have.status(200);
 });
 ```
+run `Send`
+
 Во вкладке *Test Results*  
 ```
 PASS Status code is 200
@@ -274,6 +285,8 @@ pm.test("Your test name", function () {
     pm.expect(responseData.name).to.eql(requestData.name);
 });
 ```
+run `Send`
+
 Во вкладке *Test Results*  
 ```
 PASS  Your test name
@@ -282,25 +295,29 @@ PASS  Your test name
   
 В окне *Tests* пишем:  
 ```js
-pm.test("EP_2_3. Your test age", function () {
+pm.test("Your test age", function () {
     pm.expect(responseData.age).to.eql(requestData.age);
 });
 ```
+run `Send`
+
 Во вкладке *Test Results*  
 ```
-PASS EP_2_3. Your test age
+PASS Your test age
 ```
 **7. Проверить, что salary в ответе равно salary s request (salary забрать из request.)**  
   
 В окне *Tests* пишем:  
 ```js
-pm.test("EP_2_3. Your test salary", function () {
+pm.test("Test salary", function () {
     pm.expect(responseData.salary).to.eql(Number(requestData.salary));
 });
 ```
+run `Send`
+
 Во вкладке *Test Results*  
 ```
-PASS EP_2_3. Your test salary
+PASS Test salary
 ```
 **8. Вывести в консоль параметр family из response**  
     
@@ -308,57 +325,63 @@ PASS EP_2_3. Your test salary
 ```js
 console.log('Family: ', responseData.family)
 ```
+run `Send`
+
 В консольной строке смотрим ответ:  
 ```
-Family: {children: [2], pets: {…}, u_salary_1_5_year: 240000}
+Family: {children: [2], pets: {…}, u_salary_1_5_year: 4000}
 ```
 **9. Проверить, что у параметра dog есть параметры name**  
   
 В окне *Tests* пишем:  
 ```js
-pm.test("EP_2_3. Your test dog have name", function () {
+pm.test("Test dog has name", function () {
     pm.expect(responseData.family.pets.dog).to.haveOwnProperty('name')
 });
 ```
+run `Send`
+
 Во вкладке *Test Results*  
 ```
-PASS EP_2_3. Your test dog have name
+PASS Your test dog has name
 ```
 **10. Проверить, что у параметра dog есть параметры age**  
   
 В окне *Tests* пишем:  
 ```js
-pm.test("EP_2_3. Your test dog have age", function () {
+pm.test("Test dog has age", function () {
     pm.expect(responseData.family.pets.dog).to.haveOwnProperty('age')
 });
 ```
+run `Send`
+
 Во вкладке *Test Results*  
 ```
-PASS EP_2_3. Your test dog have age
+PASS EP_2_3. Test dog has age
 ```
 **11. Проверить, что параметр name имеет значение Luky**  
   
 В окне *Tests* пишем:  
 ```js
-pm.test("EP_2_3. Your test dog have name Luky", function () {
+pm.test("Test dog's name is Luky", function () {
     pm.expect(responseData.family.pets.dog.name).to.eql('Luky')
 });
 ```
 Во вкладке *Test Results*  
 ```
-PASS EP_2_3. Your test dog have name Luky
+PASS Test dog's name is Luky
 ```
 **12. Проверить, что параметр age имеет значение 4**  
   
 В окне *Tests* пишем:  
 ```js
-pm.test("EP_2_3. Your test dog have age 4", function () {
+pm.test("Test dog have age 4", function () {
     pm.expect(responseData.family.pets.dog.age).to.eql(4)
 });
 ```
 Во вкладке *Test Results*  
 ```
-PASS EP_2_3. Your test dog have age 4
+PASS Test dog have age 4
 ```
 
   ***  
