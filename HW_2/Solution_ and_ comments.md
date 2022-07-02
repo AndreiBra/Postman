@@ -42,12 +42,22 @@ PASS Status code is 200
 PASS Status code is 200
 ```   
 
+___
 
 ### http://162.55.220.72:5005/user_info_3
 
 "Add a request" name - "hw_2"
   
+```
+Данные взять или сделать дубликат из коллекции HW_1 'Post EP_2"
 POST, http://162.55.220.72:5005/user_info_3 
+Method: POST
+EndPoint: /user_info_3
+request form data: 
+ name: Andrei
+ age: 47
+ salary: 1000
+ ```
 
 **1. Отправить запрос**  
   
@@ -55,14 +65,14 @@ run `Send`
 
 **2. Статус код 200**   
   
-В поле тест выбираем из списка SNIPPETS *Status code is 200*, в поле ввода кода появляется: 
+В поле тест выбираем из списка SNIPPETS *Status code is 200*, run `Send` в поле ввода кода появляется: 
 
 ```js
 pm.test("Status code is 200", function () {
     pm.response.to.have.status(200);
 });
 ```
-Во вкладке *Test Results*  
+Во вкладке *Test Results*  -> run `Send`
 ```
 PASS Status code is 200
 ```
@@ -77,7 +87,7 @@ run `Send`
 
 В консольной строке появится ответ:  
 ```
-response data: {age: "..", family: {…}, name: "Sergey"…}
+response data: {age: "47", family: {…}, name: "Andrei"…}
 ```
 **4. Проверить, что name в ответе равно name s request (name вбить руками.)**  
   
@@ -87,6 +97,8 @@ pm.test("Your test name", function () {
     pm.expect(responseData.name).to.eql("Andrei");
 });
 ```
+run `Send` 
+
 Во вкладке *Test Results*  
 ```
 PASS Your test name
