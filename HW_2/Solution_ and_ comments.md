@@ -215,8 +215,7 @@ run `Send`
 PASS Your test u_salary_1_5_year
 ```
 ___
-
-  ***  
+ 
 ### http://162.55.220.72:5005/object_info_3	
 
 ``` 
@@ -384,6 +383,8 @@ pm.test("Test dog have age 4", function () {
 PASS Test dog have age 4
 ```
 ___
+### http://162.55.220.72:5005/object_info_4 
+
 ```
 Cоздаем New Request, данные берем из EP_1_6  из HW_1
 или 
