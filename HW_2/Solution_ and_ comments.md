@@ -386,7 +386,7 @@ ___
 ### http://162.55.220.72:5005/object_info_4 
 
 ```
-Cоздаем New Request, данные берем из EP_1_6  из HW_1
+Cоздаем New Request, данные берем из EP_6 в HW_1
 или 
 Метод GET, http://162.55.220.72:5005/object_info_4 
 Method: GET
