@@ -735,7 +735,7 @@ PASS Test salary qa_salary_after_12_months
   
 В окне *Tests* пишем скрипт:
 ```js
-pm.test("EP_2_5. Your test salary have qa_salary_after_1.5_year", function () {
+pm.test("Test salary have qa_salary_after_1.5_year", function () {
     pm.expect(responseData).to.haveOwnProperty('qa_salary_after_1.5_year')
 });
 ```
@@ -897,7 +897,7 @@ console.log(i +': ' + responseData.person[i]);
 ```
 u_age: 47
  
-u_name: Sergey,1000,47
+u_name: Andrei,1000,47
  
 u_salary_5_years: 60000
 ```
