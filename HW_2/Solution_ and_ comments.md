@@ -622,11 +622,18 @@ My salary: 9999
 ```
 ___
 
+### http://162.55.220.72:5005/user_info_2
 
-  
-## **EP_2_5**<a name="2.5"><a>  
-Создаем New Request, выбираем метод POST,  
-пишем в *Enter request URL* http://162.55.220.72:5005/user_info_2 (EP_1_7 из HW_Postman_1)  
+```
+Method: POST
+EndPoint: /user_info_2
+request form data: 
+ name: Andrei
+ age: 47
+ salary: 1000
+```
+или  дублируем из HW_1 EP_7 
+
   
 **1. Вставить параметр salary из окружения в request**  
   
@@ -642,7 +649,7 @@ ___
   
 **4. Отправить запрос.**  
   
-Жмем *Send*  
+run `Send`
 
 **5. Статус код 200**   
   
@@ -652,213 +659,245 @@ pm.test("Status code is 200", function () {
     pm.response.to.have.status(200);
 });
 ```
+run `Send`
+
 Во вкладке *Test Results*  
 ```
 PASS Status code is 200
 ```
 **6. Спарсить response body в json**  
   
-В окне *Tests* пишем:
+В окне *Tests* пишем скрипт:
 ```js
 let responseData = pm.response.json();  
 console.log('response data:', responseData)
 ```
-В консольной строке смотрим ответ:
+run `Send`
+
+В консоле ответ:
 ```
-response data: {person: {…}, qa_salary_after_1.5_year: 198000, qa_salary_after_12_months: 162000…}
+response data: {person: {…}, qa_salary_after_1.5_year: 18000, qa_salary_after_12_months: 24000…}
 ```
 **7. Спарсить request**  
   
-В окне *Tests* пишем:
+В окне *Tests* пишем скрипт:
 ```js
 let requestData = request.data;  
 console.log('request data:', requestData)
 ```
-В консольной строке смотрим ответ:
+В консоле ответ:
 ```
-request data: {name: "Sergey", age: "36", salary: "60000"}
+request data: {name: "Andrei", age: "47", salary: "1000"}
 ```
 **8. Проверить, что json response имеет параметр start_qa_salary**  
   
-В окне *Tests* пишем:
+В окне *Tests* пишем скрипт:
 ```js
-pm.test("EP_2_5. Your test salary have start_qa_salary", function () {
+pm.test("Test salary start_qa_salary", function () {
     pm.expect(responseData).to.haveOwnProperty('start_qa_salary')
 });
 ```
+run `Send`
+
 Во вкладке *Test Results*  
 ```
-PASS EP_2_5. Your test salary have start_qa_salary
+PASS Test salary start_qa_salary
 ```
 **9. Проверить, что json response имеет параметр qa_salary_after_6_months**  
   
 В окне *Tests* пишем:
 ```js
-pm.test("EP_2_5. Your test salary have qa_salary_after_6_months", function () {
+pm.test("Test salary qa_salary_after_6_months", function () {
     pm.expect(responseData).to.haveOwnProperty('qa_salary_after_6_months')
 });
 ```
+run `Send`
+
 Во вкладке *Test Results*  
 ```
-PASS EP_2_5. Your test salary have qa_salary_after_6_months
+PASS Test salary qa_salary_after_6_months
 ```
 **10. Проверить, что json response имеет параметр qa_salary_after_12_months**  
   
 В окне *Tests* пишем:
 ```js
-pm.test("EP_2_5. Your test salary have qa_salary_after_12_months", function () {
+pm.test("Test salary qa_salary_after_12_months", function () {
     pm.expect(responseData).to.haveOwnProperty('qa_salary_after_12_months')
 });
 ```
+run `Send`
+
 Во вкладке *Test Results*  
 ```
-PASS EP_2_5. Your test salary have qa_salary_after_12_months
+PASS Test salary qa_salary_after_12_months
 ```
 **11. Проверить, что json response имеет параметр qa_salary_after_1.5_year**  
   
-В окне *Tests* пишем:
+В окне *Tests* пишем скрипт:
 ```js
 pm.test("EP_2_5. Your test salary have qa_salary_after_1.5_year", function () {
     pm.expect(responseData).to.haveOwnProperty('qa_salary_after_1.5_year')
 });
 ```
+run `Send`
+
 Во вкладке *Test Results*  
 ```
-PASS EP_2_5. Your test salary have qa_salary_after_1.5_year
+PASS Test salary qa_salary_after_1.5_year
 ```
 **12. Проверить, что json response имеет параметр qa_salary_after_3.5_years**  
   
-В окне *Tests* пишем:
+В окне *Tests* пишем скрипт:
 ```js
-pm.test("EP_2_5. Your test salary have qa_salary_after_3.5_years", function () {
+pm.test("Test salary qa_salary_after_3.5_years", function () {
     pm.expect(responseData).to.haveOwnProperty('qa_salary_after_3.5_years')
 });
 ```
+run `Send`
+
 Во вкладке *Test Results*  
 ```
-PASS EP_2_5. Your test salary have qa_salary_after_3.5_years
+PASS Test salary qa_salary_after_3.5_years
 ```
 **13. Проверить, что json response имеет параметр person**  
   
-В окне *Tests* пишем:
+В окне *Tests* пишем скрипт:
 ```js
-pm.test("EP_2_5. Your test have person", function () {
+pm.test("Test person", function () {
     pm.expect(responseData).to.haveOwnProperty('person')
 });
 ```
+run `Send`
+
 Во вкладке *Test Results*  
 ```
-PASS EP_2_5. Your test have person
+PASS Test person
 ```
 **14. Проверить, что параметр start_qa_salary равен salary из request (salary забрать из request.)**  
   
-В окне *Tests* пишем:
+В окне *Tests* пишем скрипт:
 ```js
-pm.test("EP_2_5. Your test start_qa_salary", function () {
+pm.test("Test start_qa_salary", function () {
     pm.expect(responseData.start_qa_salary).to.eql(Number(requestData.salary));
 });
 ```
+run `Send`
+
 Во вкладке *Test Results*  
 ```
-PASS EP_2_5. Your test start_qa_salary
+PASS Test start_qa_salary
 ```
 **15. Проверить, что параметр qa_salary_after_6_months равен salary*2 из request (salary забрать из request.)**  
   
-В окне *Tests* пишем:
+В окне *Tests* пишем скрипт:
 ```js
-pm.test("EP_2_5. Your test qa_salary_after_6_months", function () {
+pm.test("Test qa_salary_after_6_months", function () {
     pm.expect(responseData.qa_salary_after_6_months).to.eql(Number(requestData.salary*2));
 });
 ```
+run `Send`
+
 Во вкладке *Test Results*  
 ```
-PASS EP_2_5. Your test qa_salary_after_6_months
+PASS Test qa_salary_after_6_months
 ```
 **16. Проверить, что параметр qa_salary_after_12_months равен salary*2.7 из request (salary забрать из request.)**  
   
-В окне *Tests* пишем:
+В окне *Tests* пишем скрипт:
 ```js
-pm.test("EP_2_5. Your test qa_salary_after_12_months", function () {
+pm.test("Test qa_salary_after_12_months", function () {
     pm.expect(responseData.qa_salary_after_12_months).to.eql(Number(requestData.salary*2.7));
 });
 ```
+run `Send`
+
 Во вкладке *Test Results*  
 ```
-PASS EP_2_5. Your test qa_salary_after_12_months
+PASS Test qa_salary_after_12_months
 ```
 **17. Проверить, что параметр qa_salary_after_1.5_year равен salary*3.3 из request (salary забрать из request.)**  
   
-В окне *Tests* пишем:
+В окне *Tests* пишем скрипт:
 ```js
-pm.test("EP_2_5. Your test qa_salary_after_1.5_year", function () {
+pm.test("Test qa_salary_after_1.5_year", function () {
     pm.expect(responseData['qa_salary_after_1.5_year']).to.eql(Number(requestData.salary*3.3));
 });
 ```
+run `Send`
+
 Во вкладке *Test Results*  
 ```
-PASS EP_2_5. Your test qa_salary_after_1.5_year
+PASS Test qa_salary_after_1.5_year
 ```
 **18. Проверить, что параметр qa_salary_after_3.5_years равен salary*3.8 из request (salary забрать из request.)**  
   
-В окне *Tests* пишем:
+В окне *Tests* пишем срипт:
 ```js
-pm.test("EP_2_5. Your test qa_salary_after_3.5_years", function () {
+pm.test("Test qa_salary_after_3.5_years", function () {
     pm.expect(responseData['qa_salary_after_3.5_years']).to.eql(Number(requestData.salary*3.8));
 });
 ```
+run `Send`
+
 Во вкладке *Test Results*  
 ```
-PASS EP_2_5. Your test qa_salary_after_3.5_years
+PASS Test qa_salary_after_3.5_years
 ```
 **19. Проверить, что в параметре person, 1-й элемент из u_name равен salary из request (salary забрать из request.)**  
   
-В окне *Tests* пишем:
+В окне *Tests* пишем скрипт:
 ```js
-pm.test("EP_2_5. Your test u_name", function () {
+pm.test("Test u_name", function () {
     pm.expect(responseData.person.u_name[1]).to.eql(Number(requestData.salary));
 });
 ```
+run `Send`
+
 Во вкладке *Test Results*  
 ```
-PASS EP_2_5. Your test u_name
+PASS Test u_name
 ```
 **20. Проверить, что что параметр u_age равен age из request (age забрать из request.)**  
   
-В окне *Tests* пишем:
+В окне *Tests* пишем скрипт:
 ```js
-pm.test("EP_2_5. Your test u_age", function () {
+pm.test("Test u_age", function () {
     pm.expect(responseData.person.u_age).to.eql(Number(requestData.age));
 });
 ```
+run `Send`
+
 Во вкладке *Test Results*  
 ```
-PASS EP_2_5. Your test u_age
+PASS Test u_age
 ```
 **21. Проверить, что параметр u_salary_5_years равен salary*4.2 из request (salary забрать из request.)**  
   
 В окне *Tests* пишем:
 ```js
-pm.test("EP_2_5. Your test u_salary_5_years", function () {
+pm.test("Test u_salary_5_years", function () {
     pm.expect(responseData.person.u_salary_5_years).to.eql(Number(requestData.salary*4.2));
 });
 ```
+run `Send`
+
 Во вкладке *Test Results*  
 ```
-PASS EP_2_5. Your test u_salary_5_years
+PASS Test u_salary_5_years
 ```
 __22. ***Написать цикл который выведет в консоль по порядку элементы списка из параметра person__  
   
-В окне *Tests* пишем:
+В окне *Tests* пишем скрипт:
 ```js
 for (let i in responseData.person) {  
 console.log(i +': ' + responseData.person[i]);  
 	}
 ```
-В консольной строке смотрим ответ:
+В консоле ответ:
 ```
-u_age: 36
+u_age: 47
  
-u_name: Sergey,60000,36
+u_name: Sergey,1000,47
  
-u_salary_5_years: 252000
+u_salary_5_years: 60000
 ```
