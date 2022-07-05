@@ -82,7 +82,7 @@ http://162.55.220.72:5005/user_info_2
 22. ***Написать цикл который выведет в консоль по порядку элементы списка из параметра person.
 
 ___
-Коллекцию в json фале смотреть [здесь](), видеообзор [здесь](https://youtu.be/PRTDGceZyQs)
+Коллекцию в json фале смотреть [здесь](https://github.com/AndreiBra/Postman/blob/main/HW_2/HW_2.postman_collection.json), видеообзор [здесь](https://youtu.be/PRTDGceZyQs)
 ___
 
 ДЗ от Толи
