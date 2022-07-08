@@ -1,0 +1,166 @@
+{
+	"info": {
+		"_postman_id": "e12b8db0-743e-4942-91af-9e507b67a121",
+		"name": "HW_2_Anatoliy_1_var_1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19815096"
+	},
+	"item": [
+		{
+			"name": "HW_2_Anatoliy_1_var1",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//  1.\r",
+							"// Необходимо провести тестирование API данного эндпоинта на валидацию входных параметров. Суть задания: проверить валидации каждого поля, подаваемого в эндпоинт на возможные значения. Будем УСЛОВНО считать, что негативная проверка должна возвращать какой угодно статус НО НЕ 200! Ваша задача написать тест кейсы в постмане таким образом, что одна негативная проверка - один запрос, позитивные проверки можно объединять в 1. Ваша задача протестировать исходя из требований на все возможные аспекты. В каждом запросе тест ТОЛЬКО НА СТАТУС КОД (200 - позитивное значение, не 200 - негативное). \r",
+							"// P.S. ЗАДАНИЕ НЕ ПОДРАЗУМЕВАЕТ, ЧТО ЭНДПОИНТ РАБОТАЕТ СОГЛАСНО НАПИСАННЫМ ТРЕБОВАНИЯМ. МЫ УЧИМСЯ ПИСАТЬ ТЕСТЫ НА API!\r",
+							"// 1) Name: 3-40 символов включительно, запрещены префиксные и постфиксные пробелы. Поле обязательное\r",
+							"// 2) Age: только целые цифры в диапазоне 18-120 включительно. Поле обязательное\r",
+							"// 3) Salary: только целые цифры в диапазоне 1-1000000 включительно. Поле обязательное\r",
+							"\r",
+							"// Positive test:\r",
+							"if(request.data.name.length >= 3 && request.data.name.length <= 40 && request.data.name[0] !== \" \" && request.data.name.slice(-1) !== \" \" && request.data.name !== \"\" && typeof(+request.data.age == 'number') && +request.data.age >= 18 && +request.data.age <= 120 && Number.isInteger(+request.data.age) && +request.data.age !== \"\" && typeof(+request.data.salary) == 'number' && +request.data.salary >= 1 && +request.data.salary <= 1000000 && Number.isInteger(+request.data.salary) && +request.data.salary !== \"\"){\r",
+							"    pm.test(\"Successful POST request\", function () {\r",
+							"        pm.response.to.have.status(200);\r",
+							"    });\r",
+							"    } \r",
+							"\r",
+							"// Negative tests: \r",
+							"else {\r",
+							"    if(!request.data.age.trim()){ \r",
+							"        pm.test(\"Field age is required to fill\", function () {\r",
+							"            pm.response.to.not.have.status(200);\r",
+							"        });\r",
+							"        }   \r",
+							"    else if(typeof(+request.data.age) !== 'number'){ \r",
+							"        pm.test(\"It is not available type for age\", function () {\r",
+							"            pm.response.to.not.have.status(200);\r",
+							"        });\r",
+							"        console.log(request.data.age);\r",
+							"        }  \r",
+							"    else if(!Number.isInteger(+request.data.age)){ \r",
+							"        pm.test(\"This is fractional value of age\", function () {\r",
+							"            pm.response.to.not.have.status(200);\r",
+							"        });\r",
+							"    } \r",
+							"    else if(+request.data.age < 18){ \r",
+							"        pm.test(\"You are younger\", function () {\r",
+							"            pm.response.to.not.have.status(200);\r",
+							"        });\r",
+							"        }  \r",
+							"    else if(+request.data.age > 120){ \r",
+							"        pm.test(\"You are older\", function () {\r",
+							"            pm.response.to.not.have.status(200);\r",
+							"        });\r",
+							"        } \r",
+							"    if(!request.data.name.trim()){ \r",
+							"        pm.test(\"Field name is required to fill\", function () {\r",
+							"            pm.response.to.not.have.status(200);\r",
+							"        }); \r",
+							"     } \r",
+							"    else if(request.data.name.length < 3){ \r",
+							"        pm.test(\"This name is shoter\", function () {\r",
+							"            pm.response.to.not.have.status(200);\r",
+							"        });\r",
+							"        }      \r",
+							"    else if(request.data.length > 40){ \r",
+							"        pm.test(\"This name is longer\", function () {\r",
+							"            pm.response.to.not.have.status(200);\r",
+							"        }); \r",
+							"     } \r",
+							"    else if(request.data.name[0] == \" \"){ \r",
+							"        pm.test(\"It is not available to has space in front of name\", function () {\r",
+							"            pm.response.to.not.have.status(200);\r",
+							"        });\r",
+							"        }\r",
+							"    else if(request.data.name.slice(-1) == \" \"){ \r",
+							"        pm.test(\"It is not available to has space in end of name\", function () {\r",
+							"            pm.response.to.not.have.status(200);\r",
+							"        });\r",
+							"        }  \r",
+							"    if(!+request.data.salary.trim()){ \r",
+							"        pm.test(\"Field salary is required to fill\", function () {\r",
+							"            pm.response.to.not.have.status(200);\r",
+							"        });\r",
+							"        }      \r",
+							"    else if(typeof(+request.data.salary) !== 'number'){ \r",
+							"        pm.test(\"It is not available type for salary\", function () {\r",
+							"            pm.response.to.not.have.status(200);\r",
+							"        });\r",
+							"        console.log(request.data.salary);\r",
+							"        }  \r",
+							"    else if(!Number.isInteger(+request.data.salary)){ \r",
+							"        pm.test(\"This is fractional value of salary\", function () {\r",
+							"            pm.response.to.not.have.status(200);\r",
+							"        });\r",
+							"    } \r",
+							"    else if(+request.data.salary < 1){ \r",
+							"        pm.test(\"You are broke\", function () {\r",
+							"            pm.response.to.not.have.status(200);\r",
+							"        });\r",
+							"        }  \r",
+							"    else if(+request.data.salary > 1000000){ \r",
+							"        pm.test(\"This salary is not possible for QA\", function () {\r",
+							"            pm.response.to.not.have.status(200);\r",
+							"        });\r",
+							"        }       \r",
+							"}\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Andrei",
+							"type": "text"
+						},
+						{
+							"key": "age",
+							"value": "47",
+							"type": "text"
+						},
+						{
+							"key": "salary",
+							"value": "1000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://162.55.220.72:5005/user_info_2",
+					"protocol": "http",
+					"host": [
+						"162",
+						"55",
+						"220",
+						"72"
+					],
+					"port": "5005",
+					"path": [
+						"user_info_2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
