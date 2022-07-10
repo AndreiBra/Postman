@@ -133,3 +133,4 @@ P.S. ЗАДАНИЕ НЕ ПОДРАЗУМЕВАЕТ, ЧТО ЭНДПОИНТ Р�
 
 ___
 Коллекцию смотреть [здесь](https://github.com/AndreiBra/Postman/blob/main/HW_2/HW_2_Anatoly.postman_collection.json)
+Решение домашнего задания от Анатолия [здесь](https://github.com/AndreiBra/Postman/blob/main/HW_2/solution_task_Anatoly.md)
