@@ -1,6 +1,7 @@
 ДЗ от Толи Supermassive black hole, [Jun 27, 2022 at 11:15:36 PM]: собственно домашка
 
 Supermassive black hole, [17/05/2022 02:08] Ну и небольшая домашка от меня:) ❤️
+___
 
 (ОБЯЗАТЕЛЬНОЕ И ВАЖНЕЙШЕЕ ЗАДАНИЕ) http://162.55.220.72:5005/user_info_2 Необходимо провести тестирование API данного эндпоинта на валидацию входных параметров.
 Суть задания: проверить валидации каждого поля, подаваемого в эндпоинт на возможные значения. 
@@ -107,6 +108,8 @@ else {
 ```
 ### Variant 2 Написать каждый запрос в отдельности посмотреть 25 запросов можно в JSON файле [здесь](https://github.com/AndreiBra/Postman/blob/main/HW_2/HW_2%20_Anatoliy_1_var_2.postman_collection.json)
 
+___
+
 ### Задание 1****. Преобразовать задание 1 таким образом, чтобы вы отправляли параметры через CSV файл. У вас будет ровно 1 запрос в коллекции, который будет повторяться столько раз, сколько строк в CSV файле. Также должна быть написана функция в тестах, которая проверяет валидность входящих данных, и в зависимости от этого проверяет на статус 200 или НЕ 200.
 
 Запуск осущесствляем через `run collection`, если реквестов много снимаем галки со всех кроме нужного запроса, `select file` выбираем наш csv файл и запускаем коллекцию `run ...`
@@ -184,4 +187,118 @@ if (validate(name, age, salary)) {
         pm.response.to.not.have.status(200);
     })
 }    
+```
+
+___
+
+### 2 задание http://162.55.220.72:5007/object_info_4
+Преобразовать пункты 12-13-14 (salary из реквеста и респонса равны) таким образом, чтобы проверка производилась циклом, в котором будет всего ОДИН тест. Имя теста должно меняться в зависимости от значения в Salary
+12. Проверить, что 0-й элемент параметра salary равен salary из request (salary забрать из request.)
+13. Проверить, что 1-й элемент параметра salary равен salary*2 из request (salary забрать из request.)
+14. Проверить, что 2-й элемент параметра salary равен salary*3 из request (salary забрать из request.)
+
+```js
+const respSalary = pm.response.json().salary
+
+const reqSalary = +pm.request.url.query.get('salary')
+
+respSalary.forEach((salary, index) => {
+    pm.test(`${reqSalary} * ${index+1} === ${salary}`, () => {
+        pm.expect(reqSalary*(index+1)).to.eql(+salary)
+    })
+})
+```
+___
+
+### 3 задание http://162.55.220.72:5005/object_info_3 Преобразовать задания 5-7 (сравнить идентичные поля в реквесте и респонсе) таким образом, чтобы это делалось ЗА ОДИН ТЕСТ (сразу все 3 поля) БЕЗ ЦИКЛОВ! (глубокое сравнение объектов)
+5. Проверить, что name в ответе равно name s request (name забрать из request.)
+6. Проверить, что age в ответе равно age s request (age забрать из request.)
+7. Проверить, что salary в ответе равно salary s request (salary забрать из request.)
+
+### Variant 1
+```js
+const reqObject = pm.request.url.query.toObject()
+const respObject = {
+    age: String(pm.response.json().age),
+    name: pm.response.json().name,
+    salary: String(pm.response.json().salary)
+}
+
+pm.test('Compare request object and response object', () => {
+    pm.expect(reqObject).to.deep.eql(respObject)
+})
+```
+### Variant 2
+
+```js
+const jsonData = pm.response.json()
+
+const resp = {};
+for(const key in reqObject) {
+    resp[key] = isNaN(jsonData[key]) ? jsonData[key] : +jsonData[key]
+    reqObject[key] = isNaN(reqObject[key]) ? reqObject[key] : +reqObject[key]
+}
+
+pm.test('2.0 Compare request object and response object', () => {
+    pm.expect(reqObject).to.deep.eql(resp)
+})
+```
+___
+
+### 4 задание
+//4.  http://162.55.220.72:5005/user_info_2
+
+//4.1.  Преобразовать задания 8 - 13 (проверить что в json имеется нужный параметр) таким образом, чтобы все проверки делались в цикле (1 проверка в цикле, в которую попадают нужные параметры). Название теста должно видоизменяться исходя из подаваемых данных. ( ${} или другим способом)
+// 8. Проверить, что json response имеет параметр start_qa_salary
+// 9. Проверить, что json response имеет параметр qa_salary_after_6_months
+// 10. Проверить, что json response имеет параметр qa_salary_after_12_months
+// 11. Проверить, что json response имеет параметр qa_salary_after_1.5_year
+// 12. Проверить, что json response имеет параметр qa_salary_after_3.5_years
+// 13. Проверить, что json response имеет параметр person
+```js
+const keyisInJson = ['start_qa_salary', 'qa_salary_after_6_months', 'qa_salary_after_12_months', 'qa_salary_after_1.5_year', 'qa_salary_after_3.5_years', 'person']
+let resp = pm.response.json()
+
+keyisInJson.forEach(key => {
+    pm.test(`Response has ${key}`, () => {
+        pm.expect(resp).to.have.property(key)
+    })
+})
+```
+//4.2.  ** Преобразовать задания 14 - 18 (проверить что параметр равен salary умножить на коэффициент) таким образом, чтобы все проверки делались в цикле (1 проверка в цикле, в которую попадают нужные параметры). Название теста должно видоизменяться исходя из подаваемых данных. ( ${} или другим способом)
+// 14. Проверить, что параметр start_qa_salary равен salary из request (salary забрать из request.)
+// 15. Проверить, что параметр qa_salary_after_6_months равен salary*2 из request (salary забрать из request.)
+// 16. Проверить, что параметр qa_salary_after_12_months равен salary*2.7 из request (salary забрать из request.)
+// 17. Проверить, что параметр qa_salary_after_1.5_year равен salary*3.3 из request (salary забрать из request.)
+// 18. Проверить, что параметр qa_salary_after_3.5_years равен salary*3.8 из request (salary забрать из request.)
+```js
+const salary = pm.environment.get('salary')
+const counters = {
+  "start_qa_salary": 1,
+  "qa_salary_after_6_months": 2,
+  "qa_salary_after_3.5_years": 3.8,
+  "qa_salary_after_12_months": 2.7,
+  "qa_salary_after_1.5_year": 3.3
+}
+
+for(const key in counters) {
+    pm.test(`${key} from response = salary from request * ${counters[key]}`, () => {
+        pm.expect(+resp[key]).to.eql(salary*counters[key])
+    })
+}
+```
+//4.3.  *** Преобразовать описанные выше задания 1 и 2 для данного эндпоинта в ОДИН ЦИКЛ, в котором будут проходить ОБА теста.
+```js
+counters['person'] = ''
+
+for(const key in counters) {
+       pm.test(`response has ${key}`, () => {
+         pm.expect(resp).to.have.property(key)
+             })
+    if(key != 'person'){
+        pm.test(`${key} from response = salary from request * ${counters[key]}`, () => {
+        pm.expect(+resp[key]).to.eql(salary*counters[key])
+        })
+    }         
+}
 ```
