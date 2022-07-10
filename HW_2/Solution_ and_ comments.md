@@ -1009,4 +1009,4 @@ else {
         }       
 }
 ```
-### Variant 2 Написать каждый запрос в отдельности посмотреть 25 запросов можно в JSON файле [здесь]https://github.com/AndreiBra/Postman/blob/main/HW_2/HW_2%20_Anatoliy_1_var_2.postman_collection.json)
+### Variant 2 Написать каждый запрос в отдельности посмотреть 25 запросов можно в JSON файле [здесь](https://github.com/AndreiBra/Postman/blob/main/HW_2/HW_2%20_Anatoliy_1_var_2.postman_collection.json)
