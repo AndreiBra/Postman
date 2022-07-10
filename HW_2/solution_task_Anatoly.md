@@ -152,6 +152,8 @@ if (validTest()) {
     });
 }
 ```
+Variant 2 от Anatoliya
+
 ```js
 const age = pm.iterationData.get('age');
 const name = pm.iterationData.get('name');
