@@ -1,0 +1,38 @@
+name, age, salary
+Andrei, 47, 1000
+ ,  , 
+AndreiAndreiAndreiAndreiAndreiAndreiAndr, 47, 1000
+AndreiAndreiAndreiAndreiAndreiAndreiAndre, 47, 1000
+ Andrei Andrei, 47, 1000 
+And, 47, 1000
+An, 47, 1000
+ , 47, 1000
+0, 47, 1000
+Andrei, 3.14, 1000
+Andrei, 120, 1000
+Andrei, 121, 1000
+Andrei, 18, 1000
+Andrei, 17, 1000
+Andrei,  , 1000
+Andrei, 0, 1000
+Andrei, 47, 1000000
+Andrei, 47, 1000001
+Andrei, 47, 1
+Andrei, 47, 0
+Andrei, 47, 1o0
+Andrei,47 1000@0
+Andrei, 47, 
+Andrei, 1o, 1000
+Andrei, 1@, 1000
+<script>alert('name')</script>,47,1000
+Andrei, a! +, 1000
+<b>Andrei</b>, 47, 1000
+Андрей, 47, 1000
+Andrei, -47, 1000
+Andrei, 47, -1000
+Andrei, 47, 1000.1
+Andrei, 47, true
+Andrei, 47, '1000'
+Andrei, 47e1, 1000
+Andrei, 47, 1000e1
+Andrei, !@#$%^&*(),  1000
