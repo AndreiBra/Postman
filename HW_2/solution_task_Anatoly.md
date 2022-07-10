@@ -14,8 +14,9 @@ P.S. ЗАДАНИЕ НЕ ПОДРАЗУМЕВАЕТ, ЧТО ЭНДПОИНТ Р�
 2. Age: только целые цифры в диапазоне 18-120 включительно. Поле обязательное
 3. Salary: только целые цифры в диапазоне 1-1000000 включительно. Поле обязательное
 
-```
+
 ### Variant 1 С помощью одного запроса, только мы можм менять в BODY ключи, тем самым делая позитивный или негативный тест. 
+
 ```js
 if(request.data.name.length >= 3 && request.data.name.length <= 40 && request.data.name[0] !== " " && request.data.name.slice(-1) !== " " && request.data.name !== "" && typeof(+request.data.age == 'number') && +request.data.age >= 18 && +request.data.age <= 120 && Number.isInteger(+request.data.age) && +request.data.age !== "" && typeof(+request.data.salary) == 'number' && +request.data.salary >= 1 && +request.data.salary <= 1000000 && Number.isInteger(+request.data.salary) && +request.data.salary !== ""){
     pm.test("Successful POST request", function () {
